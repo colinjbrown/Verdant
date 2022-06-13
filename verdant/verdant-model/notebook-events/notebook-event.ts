@@ -21,8 +21,9 @@ export abstract class NotebookEvent {
     console.log("Running Event?");
     let ev = new Promise<Checkpoint>(async (accept) => {
       // create a checkpoint to record this event
+      console.log("Running....");
       this.checkpoint = this.history.checkpoints.generateCheckpoint();
-
+      console.log("Reached checkpoint",this.checkpoint);
       // evaluate what updates are needed to the model caused by this event
       await this.modelUpdate();
 

@@ -14,6 +14,7 @@ export class LoadNotebook extends NotebookEvent {
 
   async modelUpdate() {
     let newNotebook: NodeyNotebook;
+    console.log("Model update being called?");
     console.log(this.matchPrior,this.notebook.model)
     if (this.matchPrior && this.notebook.model) {
       console.log('This is a hot start');

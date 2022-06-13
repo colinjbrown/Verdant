@@ -42,14 +42,16 @@ export class VerNotebook {
   }
 
   private async init() {
+    console.log("Initializing");
     await this.view.ready;
-
+    console.log("View Ready");
     //load in prior data if exists
     var prior = await this.history.init(this);
 
-    console.log(this,prior);
+    console.log("Hist init",this,prior);
     // load in the notebook model from data
     let loadEvent = new LoadNotebook(this, prior);
+    console.log("New Loadnotebook event");
     await this.handleNotebookEvent(loadEvent);
 
     // finish initialization
@@ -64,8 +66,10 @@ export class VerNotebook {
 
   public async handleNotebookEvent(event: NotebookEvent) {
     try {
+      console.log("Notebook event",event);
       await Promise.all(this.eventQueue).then(() => (this.eventQueue = []));
       let ev = event.runEvent();
+      console.log("Notebook event",ev);
       this.eventQueue.push(ev);
       return ev;
     } catch (error) {
