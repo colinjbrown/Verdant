@@ -101,6 +101,7 @@ export class NotebookListen {
     this._notebook.model?.cells?.changed.connect(
       (sender: any, data: IObservableList.IChangedArgs<ICellModel>) => {
         // to avoid duplicates during load wait til load is complete
+        console.log(sender,data);
         if (!this.verNotebook.ready) return;
 
         var newIndex = data.newIndex;

@@ -91,7 +91,10 @@ const extension: JupyterFrontEndPlugin<void> = {
 
     // Connect signal handlers for editor view change.
     (app.shell as LabShell).activeChanged.connect(() =>
+      {
+      console.log(app,manager);
       updateVerdantView(app, manager)
+      }
     );
 
     // Connect signal to shutdown everything

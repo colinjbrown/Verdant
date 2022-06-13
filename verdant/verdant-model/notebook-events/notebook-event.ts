@@ -12,11 +12,13 @@ export abstract class NotebookEvent {
   checkpoint: Checkpoint;
 
   constructor(notebook: VerNotebook) {
+    console.log(notebook);
     this.notebook = notebook;
     this.history = notebook.history;
   }
 
   public runEvent(): Promise<Checkpoint> {
+    console.log("Running Event?");
     let ev = new Promise<Checkpoint>(async (accept) => {
       // create a checkpoint to record this event
       this.checkpoint = this.history.checkpoints.generateCheckpoint();

@@ -25,6 +25,7 @@ export class VerNotebook {
     this.history = history;
     this.ast = ast;
     this.view = new NotebookListen(notebookPanel, this);
+    console.log('Vernotebook',this);
     this.cells = [];
     this.init();
   }
@@ -46,12 +47,14 @@ export class VerNotebook {
     //load in prior data if exists
     var prior = await this.history.init(this);
 
+    console.log(this,prior);
     // load in the notebook model from data
     let loadEvent = new LoadNotebook(this, prior);
     await this.handleNotebookEvent(loadEvent);
 
     // finish initialization
     log("Loaded Notebook", this.view.notebook, this.model);
+    console.log("Loaded Notebook", this.view.notebook, this.model)
     this.dump();
     this._ready.resolve(undefined);
 

@@ -47,6 +47,7 @@ export class Commit {
     // first see if this commit can be combined with a prior one
     const merged = this.attemptMergeWithPriorCheckpoint([added], [index]);
 
+    console.log(this.notebook);
     // add cell is an event that changes notebook version
     if (!this.notebook) this.createNotebookVersion();
 

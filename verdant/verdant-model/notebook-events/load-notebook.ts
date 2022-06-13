@@ -14,13 +14,16 @@ export class LoadNotebook extends NotebookEvent {
 
   async modelUpdate() {
     let newNotebook: NodeyNotebook;
+    console.log(this.matchPrior,this.notebook.model)
     if (this.matchPrior && this.notebook.model) {
+      console.log('This is a hot start');
       newNotebook = await this.notebook.ast.hotStartNotebook(
         this.notebook.model,
         this.notebook.view.notebook,
         this.checkpoint
       );
     } else
+      console.log('This is  a cold start');
       newNotebook = await this.notebook.ast.coldStartNotebook(
         this.notebook.view.notebook,
         this.checkpoint

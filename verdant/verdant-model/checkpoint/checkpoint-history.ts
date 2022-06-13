@@ -30,6 +30,7 @@ export class HistoryCheckpoints {
 
   public getForNotebook(notebook: NodeyNotebook): Checkpoint[] {
     let checkpoints = [];
+    console.log(notebook);
     let created = notebook.created;
     let index = this.timeTable[created];
 

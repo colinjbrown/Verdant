@@ -5,9 +5,11 @@ export abstract class Nodey {
   parent: string | undefined; //lookup id for the parent Nodey of this Nodey
 
   constructor(options: Nodey.Options) {
+    console.log(options);
     this.id = options.id;
     if (options.created !== undefined) this.created = options.created;
     if (options.parent !== undefined) this.parent = options.parent + "";
+    console.log(this);
   }
 
   get name(): string {

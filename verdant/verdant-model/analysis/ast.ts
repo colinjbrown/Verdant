@@ -32,6 +32,7 @@ export class AST {
   ): Promise<NodeyNotebook> {
     let changedCells: CellRunData[] = [];
     // create a new notebook
+    console.log("Cold starting notebook?");
     let notebook = this.create.createNotebook({
       created: checkpoint.id,
       cells: [],
@@ -67,6 +68,7 @@ export class AST {
     checkpoint: Checkpoint
   ): Promise<NodeyNotebook> {
     // just match up exact matches
+    console.log("Hot starting notebook?");
     let toMatch = [];
     let matchCount = 0;
     notebook_history.cells.forEach((name: string) => {

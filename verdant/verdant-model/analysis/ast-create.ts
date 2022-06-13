@@ -23,6 +23,8 @@ export class ASTCreate {
 
   public createNotebook(options: NodeyNotebook.Options) {
     let notebook = new NodeyNotebook(options);
+    console.log('notebook',notebook);
+    console.log('options',options);
     this.history.store.store(notebook);
     return notebook;
   }

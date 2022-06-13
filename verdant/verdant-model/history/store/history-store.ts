@@ -39,6 +39,9 @@ export class HistoryStore {
   }
 
   get currentNotebook(): NodeyNotebook | undefined {
+    console.log(this);
+
+    console.log(this._notebookHistory);
     return this._notebookHistory?.latest;
   }
 
@@ -163,13 +166,17 @@ export class HistoryStore {
   }
 
   public store(nodey: Nodey): void {
+    console.log('Nodey',nodey);
+
     if (nodey instanceof NodeyNotebook) {
       let id = 0;
       nodey.id = id;
       // if this is the first version
       if (!this._notebookHistory)
+        console.log("Creating new history?");
         this._notebookHistory = new NodeHistory<NodeyNotebook>();
-      this._notebookHistory.addVersion(nodey);
+        console.log("Created",this._notebookHistory);
+        this._notebookHistory.addVersion(nodey);
     } else {
       let store = this._getStoreFor(nodey);
       if (store) {
